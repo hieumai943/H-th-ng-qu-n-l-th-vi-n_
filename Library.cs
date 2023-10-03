@@ -1,11 +1,12 @@
 class Library
 {
-    private Dictionary<int, string> books = new Dictionary<int, string>();
+    public Dictionary<int, string> books = new Dictionary<int, string>();
     private Dictionary<int, List<int>> users = new Dictionary<int, List<int>>();
 
-    public void AddBook(int bookId, string title)
+    public void AddBook( string title)
     {
-        books[bookId] = title;
+        int n = books.Values.ToArray().Length;
+        books[n] = title;
     }
 
     public string BorrowBook(int userId, int bookId)

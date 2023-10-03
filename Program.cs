@@ -9,6 +9,14 @@ class Program
         while (true)
         {
             Console.WriteLine("Library Management System");
+            Console.WriteLine("List of books in library");
+
+             var keyValueArray = library.books.Select(kvp => new { Key = kvp.Key, Value = kvp.Value }).ToArray();
+             if(keyValueArray.Length ==0) Console.WriteLine("None books is in library");
+            foreach (var book in keyValueArray)
+            {
+                Console.WriteLine($"Id: {book.Key}, Title: {book.Value}");
+            }
             Console.WriteLine("1. Add Book");
             Console.WriteLine("2. Borrow Book");
             Console.WriteLine("3. Return Book");
@@ -22,11 +30,10 @@ class Program
             {
                 case 1:
                     // Thêm sách (Add Book)
-                    Console.Write("Enter book ID: ");
-                    int bookId = Convert.ToInt32(Console.ReadLine());
+                   
                     Console.Write("Enter book title: ");
                     string title = Console.ReadLine();
-                    library.AddBook(bookId, title);
+                    library.AddBook( title);
                     Console.WriteLine("Book added successfully.");
                     break;
 
